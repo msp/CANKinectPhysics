@@ -5,6 +5,8 @@
 import processing.opengl.*; // opengl
 import SimpleOpenNI.*; // kinect
 import blobDetection.*; // blobs
+//importing java utility used in PolygonBlob
+import java.util.Collections.*;
 
 // this is a regular java import so we can use and extend the polygon class (see PolygonBlob)
 import java.awt.Polygon;
@@ -43,6 +45,8 @@ void setup() {
   size(1280, 720, OPENGL);
   // initialize SimpleOpenNI object
   context = new SimpleOpenNI(this);
+    // mirror the image to be more intuitive
+    context.setMirror(true);
   if (!context.enableDepth() || !context.enableUser()) { 
     // if context.enableScene() returns false
     // then the Kinect is not working correctly
@@ -50,8 +54,6 @@ void setup() {
     println("Kinect not connected!"); 
     exit();
   } else {
-    // mirror the image to be more intuitive
-    context.setMirror(true);
     // calculate the reScale value
     // currently it's rescaled to fill the complete width (cuts of top-bottom)
     // it's also possible to fill the complete height (leaves empty sides)
@@ -60,7 +62,7 @@ void setup() {
     blobs = createImage(kinectWidth/3, kinectHeight/3, RGB);
     // initialize blob detection object to the blob image dimensions
     theBlobDetection = new BlobDetection(blobs.width, blobs.height);
-    theBlobDetection.setThreshold(0.2);
+    theBlobDetection.setThreshold(0.7);
     setupFlowfield();
   }
 }

@@ -12,7 +12,5 @@ http://forum.processing.org/two/discussion/2625/can-kinect-physics-code-examples
 
 All are examples are based upon Amnon's zip at the root of the forum thread. Respect!
 
-They all build & run but 02 doesn't seem to run correctly.
+They all build & run.
 The 03 source was copied from Modqhx post in the forum thread so credit to him for getting it running!
-
-This repo will hopefuly save someone else some time if they're tryin to follow the article. Please fork at will.
